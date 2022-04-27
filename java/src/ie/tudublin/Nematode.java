@@ -15,7 +15,7 @@ public class Nematode
     @Override
     public String toString()
     {
-        return name;
+        return "Nematode" + name + ", length" + length + ", limbs: " + limbs + ", gender: " + gender + ", eyes: " + eyes;
     }    
 
 
