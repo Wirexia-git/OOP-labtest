@@ -17,17 +17,27 @@ public class NematodeVisualiser extends PApplet
 	{		
 		if (keyCode == LEFT)
 		{
-		}		
-	}
+			if(variant == 0)
+			{
+				variant = nematodes.size() - 1;
+			}
+			else
+			{
+				variant--;
+			}
 
-	public void loadNematodes()
-	{
-		Table table = loadTable("nematode.csv", "header");
-		for(TableRow r:table.rows())
-		{
-			Nematode n = new Nematode(r);
-			nematodes.add(n);
-		}
+			if(keyCode == RIGHT)
+			{
+				if(variant == nematodes.size() - 1)
+				{
+					variant = 0;
+				}
+				else
+				{
+					variant++;
+				}
+			}
+		}		
 	}
 	
 	public void settings()
@@ -43,6 +53,16 @@ public class NematodeVisualiser extends PApplet
 		loadNematodes();		
 	}
 
+	public void loadNematodes()
+	{
+		Table table = loadTable("nematode.csv", "header");
+		for(TableRow r:table.rows())
+		{
+			Nematode n = new Nematode(r);
+			nematodes.add(n);
+		}
+	}
+
 	public void draw()
 	{	
 		clear();
@@ -51,8 +71,12 @@ public class NematodeVisualiser extends PApplet
 
 		textAlign(CENTER);
 		textSize(60);
+		fill(255, 0, 255);
 		text(Name, 400, 50);
 
-		circle(224, 184, 220);
+		for (int i = 0; i < n.getLength(); i++)
+		{
+			circle(250, 250, 250);
+		}
 	}
 }
